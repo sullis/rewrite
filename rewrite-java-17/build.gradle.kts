@@ -5,6 +5,13 @@ val compiler = javaToolchains.compilerFor {
     languageVersion.set(JavaLanguageVersion.of(16))
 }
 
+val maybeExe = if(getCurrentOperatingSystem().isWindows) {
+    ".exe"
+} else {
+    ""
+}
+val javac = compiler.get().metadata.installationPath.file("bin/javac${maybeExe}")
+
 dependencies {
     compileOnly("org.slf4j:slf4j-api:1.7.+")
 
@@ -36,6 +43,8 @@ tasks.withType<JavaCompile>().configureEach {
     sourceCompatibility = JavaVersion.VERSION_16.toString()
     targetCompatibility = JavaVersion.VERSION_16.toString()
     options.compilerArgs.clear() // remove `--release 8` set in root gradle build
+    options.isFork = true
+    options.forkOptions.executable = javac.toString()
     options.compilerArgs.addAll(listOf(
         "--add-exports", "jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
         "--add-exports", "jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED",

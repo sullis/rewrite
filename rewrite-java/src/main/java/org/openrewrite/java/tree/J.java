@@ -17,6 +17,7 @@ package org.openrewrite.java.tree;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -139,6 +140,7 @@ public interface J extends Serializable, Tree {
     final class Annotation implements J, Expression {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -329,6 +331,7 @@ public interface J extends Serializable, Tree {
     final class Assignment implements J, Statement, Expression, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -415,6 +418,7 @@ public interface J extends Serializable, Tree {
     final class AssignmentOperation implements J, Statement, Expression, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -519,6 +523,7 @@ public interface J extends Serializable, Tree {
     final class Binary implements J, Expression, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -623,6 +628,7 @@ public interface J extends Serializable, Tree {
     final class Block implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -745,6 +751,7 @@ public interface J extends Serializable, Tree {
     final class Case implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -821,10 +828,12 @@ public interface J extends Serializable, Tree {
     final class ClassDeclaration implements J, Statement, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Annotations> annotations;
 
         @With
@@ -914,11 +923,11 @@ public interface J extends Serializable, Tree {
         @SuppressWarnings("unchecked")
         @Override
         public ClassDeclaration withType(@Nullable JavaType type) {
-            if(type == this.type) {
+            if (type == this.type) {
                 return this;
             }
 
-            if(!(type instanceof JavaType.FullyQualified)) {
+            if (!(type instanceof JavaType.FullyQualified)) {
                 throw new IllegalArgumentException("A class can only be type attributed with a fully qualified type name");
             }
 
@@ -1084,10 +1093,12 @@ public interface J extends Serializable, Tree {
     final class CompilationUnit implements J, SourceFile {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<TypeCache> typesInUse;
 
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -1242,6 +1253,7 @@ public interface J extends Serializable, Tree {
     final class DoWhileLoop implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -1398,6 +1410,7 @@ public interface J extends Serializable, Tree {
     final class EnumValueSet implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -1473,6 +1486,7 @@ public interface J extends Serializable, Tree {
     final class FieldAccess implements J, TypeTree, Expression {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -1617,6 +1631,7 @@ public interface J extends Serializable, Tree {
     final class ForEachLoop implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -1664,6 +1679,7 @@ public interface J extends Serializable, Tree {
         public static final class Control implements J {
             @Nullable
             @NonFinal
+            @JsonIgnore
             transient WeakReference<Padding> padding;
 
             @With
@@ -1778,6 +1794,7 @@ public interface J extends Serializable, Tree {
     final class ForLoop implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -1825,6 +1842,7 @@ public interface J extends Serializable, Tree {
         public static final class Control implements J {
             @Nullable
             @NonFinal
+            @JsonIgnore
             transient WeakReference<Padding> padding;
 
             @With
@@ -2097,6 +2115,7 @@ public interface J extends Serializable, Tree {
     final class If implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -2149,6 +2168,7 @@ public interface J extends Serializable, Tree {
         public static final class Else implements J {
             @Nullable
             @NonFinal
+            @JsonIgnore
             transient WeakReference<Padding> padding;
 
             @With
@@ -2244,6 +2264,7 @@ public interface J extends Serializable, Tree {
     final class Import implements J, Comparable<Import> {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -2388,6 +2409,7 @@ public interface J extends Serializable, Tree {
     final class InstanceOf implements J, Expression, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -2464,6 +2486,7 @@ public interface J extends Serializable, Tree {
     final class Label implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -2580,6 +2603,7 @@ public interface J extends Serializable, Tree {
         public static final class Parameters implements J {
             @Nullable
             @NonFinal
+            @JsonIgnore
             transient WeakReference<Padding> padding;
 
             @With
@@ -2714,6 +2738,7 @@ public interface J extends Serializable, Tree {
     final class MemberReference implements J, Expression, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -2837,10 +2862,12 @@ public interface J extends Serializable, Tree {
     final class MethodDeclaration implements J, Statement, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Annotations> annotations;
 
         @With
@@ -2960,11 +2987,11 @@ public interface J extends Serializable, Tree {
         @SuppressWarnings("unchecked")
         @Override
         public MethodDeclaration withType(@Nullable JavaType type) {
-            if(type == this.type) {
+            if (type == this.type) {
                 return this;
             }
 
-            if(!(type instanceof JavaType.Method)) {
+            if (!(type instanceof JavaType.Method)) {
                 throw new IllegalArgumentException("A method can only be type attributed with a method type");
             }
 
@@ -3122,6 +3149,7 @@ public interface J extends Serializable, Tree {
     final class MethodInvocation implements J, Statement, Expression, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -3318,7 +3346,7 @@ public interface J extends Serializable, Tree {
             Synchronized,
             Native,
             Strictfp,
-        }
+            }
     }
 
     @ToString
@@ -3329,6 +3357,7 @@ public interface J extends Serializable, Tree {
     final class MultiCatch implements J, TypeTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -3411,6 +3440,7 @@ public interface J extends Serializable, Tree {
     final class NewArray implements J, Expression, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -3491,6 +3521,7 @@ public interface J extends Serializable, Tree {
     final class ArrayDimension implements J {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -3558,6 +3589,7 @@ public interface J extends Serializable, Tree {
     final class NewClass implements J, Statement, Expression, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -3726,6 +3758,7 @@ public interface J extends Serializable, Tree {
     final class ParameterizedType implements J, TypeTree, Expression {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -3814,6 +3847,7 @@ public interface J extends Serializable, Tree {
     class Parentheses<J2 extends J> implements J, Expression {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding<J2>> padding;
 
         @With
@@ -3901,6 +3935,7 @@ public interface J extends Serializable, Tree {
     final class ControlParentheses<J2 extends J> implements J, Expression {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding<J2>> padding;
 
         @With
@@ -4122,6 +4157,7 @@ public interface J extends Serializable, Tree {
     final class Ternary implements J, Expression, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -4244,6 +4280,7 @@ public interface J extends Serializable, Tree {
     final class Try implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -4440,6 +4477,7 @@ public interface J extends Serializable, Tree {
     final class TypeParameter implements J {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -4522,6 +4560,7 @@ public interface J extends Serializable, Tree {
     final class TypeParameters implements J {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<TypeParameters.Padding> padding;
 
         @With
@@ -4588,6 +4627,7 @@ public interface J extends Serializable, Tree {
     final class Unary implements J, Statement, Expression, TypedTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -4684,6 +4724,7 @@ public interface J extends Serializable, Tree {
     final class VariableDeclarations implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -4766,6 +4807,7 @@ public interface J extends Serializable, Tree {
         public static final class NamedVariable implements J, NameTree {
             @Nullable
             @NonFinal
+            @JsonIgnore
             transient WeakReference<Padding> padding;
 
             @With
@@ -4901,6 +4943,7 @@ public interface J extends Serializable, Tree {
     final class WhileLoop implements J, Statement {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With
@@ -4977,6 +5020,7 @@ public interface J extends Serializable, Tree {
     final class Wildcard implements J, Expression, TypeTree {
         @Nullable
         @NonFinal
+        @JsonIgnore
         transient WeakReference<Padding> padding;
 
         @With

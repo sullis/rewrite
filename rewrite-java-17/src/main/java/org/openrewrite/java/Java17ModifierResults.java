@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 the original author or authors.
+ * Copyright 2021 the original author or authors.
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,12 @@ import org.openrewrite.java.tree.J;
 
 import java.util.List;
 
-public final class Java11ModifierResults {
+public final class Java17ModifierResults {
 
     private final List<J.Annotation> leadingAnnotations;
     private final List<J.Modifier> modifiers;
 
-    public Java11ModifierResults(List<J.Annotation> leadingAnnotations, List<J.Modifier> modifiers) {
+    public Java17ModifierResults(List<J.Annotation> leadingAnnotations, List<J.Modifier> modifiers) {
         this.leadingAnnotations = leadingAnnotations;
         this.modifiers = modifiers;
     }

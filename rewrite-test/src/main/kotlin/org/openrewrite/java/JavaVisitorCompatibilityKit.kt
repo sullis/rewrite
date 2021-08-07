@@ -129,6 +129,9 @@ abstract class JavaVisitorCompatibilityKit {
     inner class ForLoopIncrementInUpdateTck : ForLoopIncrementInUpdateTest
 
     @Nested
+    inner class LastWriteTck : LastWriteTest
+
+    @Nested
     inner class LineCounterTck : LineCounterTest
 
     @Nested

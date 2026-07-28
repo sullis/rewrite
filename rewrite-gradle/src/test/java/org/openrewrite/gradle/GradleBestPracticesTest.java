@@ -195,4 +195,36 @@ class GradleBestPracticesTest implements RewriteTest {
           )
         );
     }
+
+    @Test
+    void mergePluginsBlocks() {
+        rewriteRun(
+          buildGradle(
+            """
+              plugins {
+                  id 'scala'
+              }
+              plugins {
+                  id 'java'
+              }
+              """,
+            """
+              plugins {
+                  id 'java'
+                  id 'scala'
+              }
+              """),
+          properties(
+            //language=properties
+            """
+              """,
+            //language=properties
+            """
+              org.gradle.caching=true
+              org.gradle.parallel=true
+              """,
+            spec -> spec.path("gradle.properties")
+          )
+        );
+    }
 }

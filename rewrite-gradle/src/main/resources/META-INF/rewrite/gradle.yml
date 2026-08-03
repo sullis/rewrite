@@ -25,6 +25,8 @@ recipeList:
   - org.openrewrite.gradle.ChangeTaskToTasksRegister
   - org.openrewrite.gradle.RemoveRedundantDependencyVersions
   - org.openrewrite.gradle.RemoveRedundantSecurityResolutionRules
+  # Runs before SortDependencies so that declarations reshaped into configuration methods sort by configuration name
+  - org.openrewrite.gradle.DependencyUseConfigurationMethod
   - org.openrewrite.gradle.SortDependencies
   - org.openrewrite.gradle.security.UseHttpsForRepositories
   - org.openrewrite.gradle.UsePropertyAssignmentSyntax:
